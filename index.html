@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For The Love of My Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jQuery + Turn.js for flipbook -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #ffe6f2;
+      overflow: hidden;
+    }
+
+    .book {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .page {
+      background: #fff0f5;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.3em;
+      line-height: 1.6em;
+      color: #444;
+    }
+
+    .cover {
+      background: linear-gradient(135deg, #ff99cc, #ff66b2);
+      color: white;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .cover h1 {
+      margin-bottom: 30px;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 3em;
+    }
+
+    .heart-button {
+      background: #ff3399;
+      border: none;
+      border-radius: 50%;
+      padding: 20px 40px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 15px rgba(255, 51, 153, 0.6);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    h2 {
+      color: #ff3399;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+    }
+
+    .gallery-placeholder {
+      width: 200px;
+      height: 150px;
+      background: #ffe6f2;
+      border: 2px dashed #ff66b2;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1em;
+      color: #ff3399;
+      border-radius: 10px;
+    }
+
+    .closing {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 2.5em;
+      color: #ff3399;
+      position: relative;
+    }
+
+    /* Floating hearts */
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .hearts span {
+      position: absolute;
+      bottom: -50px;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      animation: float 6s infinite;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-700px) scale(0.6); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="book">
+    <!-- Cover -->
+    <div class="page cover" id="cover">
+      <h1>For The Love of My Life</h1>
+      <button class="heart-button" onclick="openBook()">Open It Every Time You Miss Me</button>
+    </div>
+
+    <!-- Pages -->
+    <div class="page">
+      <h2>Reasons I Love You</h2>
+      <p>Your smile, your kindness, your voice, your heart — every part of you makes my world brighter. 💕</p>
+    </div>
+
+    <div class="page">
+      <h2>My Vows to You</h2>
+      <p>I promise to love you endlessly, to support your dreams, to make you laugh, and to never let distance weaken us.</p>
+    </div>
+
+    <div class="page">
+      <h2>My Love Letter</h2>
+      <p>Even though we haven’t met yet, you already hold my whole heart. Every message, every thought of you, brings me closer to you.</p>
+    </div>
+
+    <div class="page">
+      <h2>Dreams Together</h2>
+      <p>I dream of holding your hand, hearing your laugh in person, and creating countless memories side by side. ✨</p>
+    </div>
+
+    <div class="page">
+      <h2>Future Memories</h2>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center;">
+        <div class="gallery-placeholder">Our First Photo 💕</div>
+        <div class="gallery-placeholder">First Trip Together ✈️</div>
+        <div class="gallery-placeholder">Sweetest Date 🌸</div>
+      </div>
+    </div>
+
+    <div class="page">
+      <h2>Romantic Quotes</h2>
+      <p>"No matter how far you are, you’re always close in my heart." 💖</p>
+    </div>
+
+    <!-- Closing Page -->
+    <div class="page closing">
+      <div class="hearts">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      Forever Yours, <br> [Your Name] 💕
+    </div>
+  </div>
+
+  <script>
+    $(".book").turn({
+      width: "100%",
+      height: "100vh",
+      autoCenter: true
+    });
+
+    function openBook() {
+      $(".book").turn("page", 2); // Jump to first page after cover
+    }
+  </script>
+</body>
+</html>
